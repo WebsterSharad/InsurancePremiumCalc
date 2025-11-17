@@ -1,24 +1,18 @@
-using InsurancePremiumCalc.Presentation.Models;
+﻿using InsurancePremiumCalc.Presentation.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace InsurancePremiumCalc.Presentation.Controllers
 {
-    public class HomeController : Controller
+    public class PremiumController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<PremiumController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public PremiumController(ILogger<PremiumController> logger)
         {
             _logger = logger;
         }
-
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
