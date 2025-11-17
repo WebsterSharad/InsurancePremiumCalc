@@ -12,11 +12,16 @@ namespace InsurancePremiumCalc.Presentation.Controllers
     {
         private readonly ILogger<PremiumController> _logger;
         private readonly IPremiumService _premiumService;
+     
+
         public PremiumController(ILogger<PremiumController> logger, IPremiumService premiumService)
         {
             _logger = logger;
             _premiumService = premiumService;
         }
+
+      
+
         public IActionResult Index()
         {
             //var occupations = new List<(string Name, double value)>

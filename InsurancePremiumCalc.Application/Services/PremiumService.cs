@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace InsurancePremiumCalc.Application.Services
 {
-    internal class PremiumService : IPremiumService
+    public class PremiumService : IPremiumService
     {
        
         public Task<decimal> CalculateAsync(PremiumRequest request)
