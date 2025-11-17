@@ -52,11 +52,40 @@
                         <label class="form-label">Monthly Premium</label>
                     <div id="premium" class="p-3 bg-light border rounded text-center">₹0.00</div>
                     </div>
+                <div class="mb-3" id="result">
+                    
+                </div>
                 </form>
             </div>
         </div>
     </div>
+    <script>
+    function calculatePremium(){
 
+        const age = parseFloat($("#age").val());
+        const factor = parseFloat($("#occupation").val());
+        const sumInsured = parseFloat($("#sumInsured").val());
+      
+        if (factor > 0 && factor != '') {
+            $.ajax({
+                url: '@Url.Action("CalculatePrimium", "Premium")', // Controller Action URL
+                type: 'POST',
+                data: { Age: age, Factor: factor, SumInsured: sumInsured },
+                success: function (data) {
+                    // if (data.success) {
+                    console.log(data);
+                    $("#premium").html("₹" + data);
+                    // } else {
+                    //     $("#result").html("Error occurred");
+                    // }
+                },
+                error: function (xhr, status, error) {
+                    $("#result").html("AJAX Error: " + error);
+                }
+            });
+        }
+    }
+    </script>
  
 
 

@@ -2,7 +2,9 @@
 using InsurancePremiumCalc.Domain.DTO_s;
 using InsurancePremiumCalc.Presentation.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
+using System.Numerics;
 
 namespace InsurancePremiumCalc.Presentation.Controllers
 {
@@ -17,25 +19,32 @@ namespace InsurancePremiumCalc.Presentation.Controllers
         }
         public IActionResult Index()
         {
-            PremiumRequest request = new PremiumRequest();
+            //var occupations = new List<(string Name, double value)>
+            // {
+            //     ("Cleaner (Light Manual)", 11.50),
+            //     ("Doctor (Professional)", 1.5),
+            //     ("Author (White Collar)", 2.25),
+            //     ("Farmer (Heavy Manual)", 31.75),
+            //     ("Mechanic (Heavy Manual)", 31.75),
+            //     ("Florist (Light Manual)", 11.50),
+            //     ("Other (Heavy Manual)", 31.75)
+            // };
+
+            //ViewBag.Occupations = occupations;
 
             return View();
         }
-
         [HttpPost]
-        public async Task<decimal> CalculatePrimium(PremiumRequest model)
+        public async Task<decimal> CalculatePrimium( int Age, decimal Factor, decimal SumInsured)
         {
-           
-
             var request = new PremiumRequest
             {
-                Age = model.Age,
-                Factor = model.Factor,
-                SumInsured = model.SumInsured
+                Age = Age,
+                Factor = Factor,
+                SumInsured = SumInsured
             };
 
-            model.MonthlyPremium =await _premiumService.CalculateAsync(request);
-            return model.MonthlyPremium;
+            return await _premiumService.CalculateAsync(request);           
         }
 
 
