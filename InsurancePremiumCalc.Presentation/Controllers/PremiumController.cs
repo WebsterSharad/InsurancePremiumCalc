@@ -17,10 +17,28 @@ namespace InsurancePremiumCalc.Presentation.Controllers
         }
         public IActionResult Index()
         {
+            PremiumRequest request = new PremiumRequest();
+
             return View();
         }
 
-        
+        [HttpPost]
+        public async Task<decimal> CalculatePrimium(PremiumRequest model)
+        {
+           
+
+            var request = new PremiumRequest
+            {
+                Age = model.Age,
+                Factor = model.Factor,
+                SumInsured = model.SumInsured
+            };
+
+            model.MonthlyPremium =await _premiumService.CalculateAsync(request);
+            return model.MonthlyPremium;
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

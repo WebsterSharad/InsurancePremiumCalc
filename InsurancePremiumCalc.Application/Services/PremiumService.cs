@@ -23,12 +23,13 @@ namespace InsurancePremiumCalc.Application.Services
         {"Florist", 11.50m},
         {"Other", 31.75m}
     };
-        public decimal Calculate(PremiumRequest request)
+        public Task<decimal> CalculateAsync(PremiumRequest request)
         {           
 
             var factor = _occupationRatings[request.Occupation];
 
-            return (request.SumInsured * factor * request.AgeNextBirthday) / 1000 * 12;            
+            decimal response= (request.SumInsured * factor * request.Age) / 1000 * 12;
+            return Task.FromResult(response);
         }
 
 

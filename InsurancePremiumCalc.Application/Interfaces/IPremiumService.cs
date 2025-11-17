@@ -9,6 +9,6 @@ namespace InsurancePremiumCalc.Application.Interfaces
 {
     public interface IPremiumService
     {
-        public decimal Calculate(PremiumRequest request);
+        public Task<decimal> CalculateAsync(PremiumRequest request);
     }
 }

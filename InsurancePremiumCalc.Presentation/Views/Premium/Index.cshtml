@@ -2,6 +2,61 @@
     ViewData["Title"] = "Calculate Premium";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>    
-</div>
+
+
+
+
+
+
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4">
+                <h2 class="mb-4 text-center">Monthly Premium Calculator</h2>
+
+                <form id="premiumForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input id="name" type="text" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age Next Birthday</label>
+                        <input id="age" type="number" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="dob" class="form-label">Date of Birth (MM/YYYY)</label>
+                        <input id="dob" type="month" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="occupation" class="form-label">Usual Occupation</label>
+                        <select id="occupation" class="form-select" onchange="calculatePremium()" required>
+                            <option value="">-- Select --</option>
+                            <option value="11.50">Cleaner (Light Manual)</option>
+                            <option value="1.5">Doctor (Professional)</option>
+                            <option value="2.25">Author (White Collar)</option>
+                            <option value="31.75">Farmer (Heavy Manual)</option>
+                            <option value="31.75">Mechanic (Heavy Manual)</option>
+                            <option value="11.50">Florist (Light Manual)</option>
+                            <option value="31.75">Other (Heavy Manual)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="sumInsured" class="form-label">Death – Sum Insured</label>
+                        <input id="sumInsured" type="number" class="form-control" required oninput="calculatePremium()">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Monthly Premium</label>
+                    <div id="premium" class="p-3 bg-light border rounded text-center">₹0.00</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+ 
+
+
