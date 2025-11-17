@@ -11,19 +11,24 @@ namespace InsurancePremiumCalc.Application.Services
 {
     internal class PremiumService : IPremiumService
     {
+        // Used Hardcoded insted call from DB as mentioned inDoc // Additional requirement: Database table design for the above (diagram or representation only, no need of scripts)
+        private readonly Dictionary<string, decimal> _occupationRatings =
+        new Dictionary<string, decimal>
+    {
+        {"Cleaner", 11.50m},
+        {"Doctor", 1.50m},
+        {"Author", 2.25m},
+        {"Farmer", 31.75m},
+        {"Mechanic", 31.75m},
+        {"Florist", 11.50m},
+        {"Other", 31.75m}
+    };
+        public decimal Calculate(PremiumRequest request)
+        {           
 
-        private readonly HttpClient _httpClient;
+            var factor = _occupationRatings[request.Occupation];
 
-        public PremiumService(HttpClient httpClient)
-        {
-            _httpClient = httpClient;
-        }
-
-        public async Task<decimal> Calculate(PremiumRequest request)
-        {
-            var response = await _httpClient.PostAsJsonAsync("api/premium/calculate", request);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<decimal>();
+            return (request.SumInsured * factor * request.AgeNextBirthday) / 1000 * 12;            
         }
 
 

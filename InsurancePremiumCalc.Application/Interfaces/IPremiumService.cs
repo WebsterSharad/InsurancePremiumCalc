@@ -7,8 +7,8 @@ using InsurancePremiumCalc.Domain.DTO_s;
 
 namespace InsurancePremiumCalc.Application.Interfaces
 {
-    internal interface IPremiumService
+    public interface IPremiumService
     {
-        public Task<decimal> Calculate(PremiumRequest request);
+        public decimal Calculate(PremiumRequest request);
     }
 }
