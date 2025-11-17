@@ -30,10 +30,11 @@ git clone https://github.com/WebsterSharad/InsurancePremiumCalc
 
 This is a InsurancePremiumCalc project having calculations of Insurance Premium Calculation. 
 
- InsurancePremiumCalc.Domain>>Model>> having DB structure in text file only
- InsurancePremiumCalc.Presentation >> used MVC application and used js html as mentioned
- InsurancePremiumCalc.Infrastructure>> added but as not using DB server and dbcontext and migration It is added as using clean architecture.                                           
- InsurancePremiumCalc.Test>> Adding for test
+ *InsurancePremiumCalc.Domain>>Model>> having DB structure in text file only
+ *InsurancePremiumCalc.Presentation >> used MVC application and used js html as mentioned
+ *InsurancePremiumCalc.Infrastructure>> added but as not using DB server and dbcontext and migration It is added as using clean architecture.                                           
+ *InsurancePremiumCalc.Test>> Adding for test
+
 
 
 
