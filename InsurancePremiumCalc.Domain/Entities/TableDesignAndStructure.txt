@@ -1,0 +1,37 @@
+﻿
+
+Table Design :
+
++------------------+          +--------------------------+
+|      Member      |          |     OccupationRating     |
++------------------+          +--------------------------+
+| MemberId (PK)    |   --->   | OccupationId (PK)        |
+| Name             |          | OccupationName           |
+| AgeNextBirthday  |          | RatingCategory           |
+| DateOfBirth      |          | RatingFactor             |
+| OccupationId (FK)|          +--------------------------+
+| SumInsured       |
+| MonthlyPremium   |
++------------------+
+
+
+Table Structure :
+
+CREATE TABLE OccupationRating (
+    OccupationId INT PRIMARY KEY IDENTITY,
+    OccupationName VARCHAR(50),
+    RatingCategory VARCHAR(50),
+    RatingFactor DECIMAL(10,2)
+);
+
+
+CREATE TABLE Member (
+    MemberId INT PRIMARY KEY IDENTITY,
+    Name VARCHAR(100) NOT NULL,
+    AgeNextBirthday INT NOT NULL,
+    DateOfBirth VARCHAR(7) NOT NULL,
+    OccupationId INT NOT NULL,
+    SumInsured DECIMAL(18,2) NOT NULL,
+    MonthlyPremium DECIMAL(18,2) NOT NULL,
+    FOREIGN KEY (OccupationId) REFERENCES OccupationRating(OccupationId)
+);
